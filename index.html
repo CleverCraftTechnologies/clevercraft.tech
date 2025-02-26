@@ -1,295 +1,587 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CleverCraft Technologies - Pioneering Security Research</title>
+    <title>CleverCraft Technologies - Game Security Experts</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Montserrat', sans-serif;
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Rajdhani:wght@300;400;500;600;700&display=swap');
+
+        :root {
+            --primary: #00f0ff;
+            --primary-hover: #00d8e6;
+            --secondary: #00ff8c;
+            --secondary-hover: #00e67d;
+            --background: #0a0a0a;
+            --foreground: #f8f8f8;
+            --card: #111111;
+            --card-foreground: #f0f0f0;
+            --border: #333333;
+            --input: #222222;
+            --ring: #00f0ff;
         }
 
         body {
-            background: #0a0a14;
-            color: #e6e6ff;
-            line-height: 1.6;
+            font-family: 'Rajdhani', sans-serif;
+            background-color: var(--background);
+            color: var(--foreground);
             overflow-x: hidden;
         }
 
-        /* Hero Section */
-        .hero {
-            height: 100vh;
-            background: linear-gradient(145deg, #1a1a3b 0%, #2d2d6b 50%, #0a0a14 100%);
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-            position: relative;
-            overflow: hidden;
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Orbitron', sans-serif;
         }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
-            animation: pulse 10s infinite;
+        .cyber-grid {
+            background-image: 
+                linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+            background-size: 20px 20px;
+            background-position: center center;
         }
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 0.5; }
-            50% { transform: scale(1.2); opacity: 0.3; }
+        .glow {
+            text-shadow: 0 0 10px var(--primary), 0 0 20px var(--primary), 0 0 30px var(--primary);
         }
 
-        .hero h1 {
-            font-size: 4rem;
-            font-weight: 800;
-            margin-bottom: 15px;
-            text-transform: uppercase;
-            letter-spacing: 3px;
-            background: linear-gradient(90deg, #00d4ff, #ff00cc);
-            -webkit-background-clip: text;
-            color: transparent;
-            position: relative;
-            z-index: 1;
+        .glow-box {
+            box-shadow: 0 0 10px rgba(0, 240, 255, 0.3), 0 0 20px rgba(0, 240, 255, 0.2);
         }
 
-        .hero .slogan {
-            font-size: 2.5rem;
-            font-weight: 900;
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            background: linear-gradient(90deg, #66d9ff, #b366ff, #ff66cc, #66d9ff);
-            background-size: 400% 100%;
-            -webkit-background-clip: text;
-            color: transparent;
-            position: relative;
-            z-index: 1;
-            text-shadow: 0 2px 10px rgba(0, 212, 255, 0.3);
-            animation: subtle-rainbow 30s linear infinite;
-        }
-
-        @keyframes subtle-rainbow {
-            0% { background-position: 0% 50%; }
-            100% { background-position: 100% 50%; }
-        }
-
-        .hero p {
-            font-size: 1.5rem;
-            max-width: 700px;
-            margin-bottom: 30px;
-            color: #c0c0e0;
-            position: relative;
-            z-index: 1;
-        }
-
-        .btn-container {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            justify-content: center;
-        }
-
-        .btn {
-            display: inline-block;
-            padding: 14px 35px;
-            background: rgba(255, 255, 255, 0.1);
-            color: #00d4ff;
-            text-decoration: none;
-            font-weight: 600;
-            border-radius: 50px;
-            border: 1px solid rgba(0, 212, 255, 0.3);
+        .glass {
+            background: rgba(17, 17, 17, 0.85);
             backdrop-filter: blur(10px);
-            transition: all 0.4s ease;
-        }
-
-        .btn:hover {
-            background: #00d4ff;
-            color: #0a0a14;
-            transform: scale(1.05);
-            box-shadow: 0 8px 20px rgba(0, 212, 255, 0.5);
-        }
-
-        /* Sections */
-        section {
-            padding: 100px 20px;
-            text-align: center;
-            position: relative;
-        }
-
-        .why, .solutions, .cta {
-            background: rgba(20, 20, 40, 0.9);
-            margin: 20px auto;
-            max-width: 1200px;
-            border-radius: 20px;
-            padding: 50px;
-            backdrop-filter: blur(15px);
+            -webkit-backdrop-filter: blur(10px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        h2 {
-            font-size: 2.8rem;
-            margin-bottom: 25px;
-            background: linear-gradient(90deg, #00d4ff, #7a00ff);
+        .btn-primary {
+            background-color: var(--primary);
+            color: #000;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: var(--primary-hover);
+            box-shadow: 0 0 15px var(--primary);
+        }
+
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--primary);
+            border: 1px solid var(--primary);
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background-color: rgba(0, 240, 255, 0.1);
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .card {
+            background-color: var(--card);
+            border-radius: 0.5rem;
+            border: 1px solid var(--border);
+            transition: all 0.3s ease;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 5px 15px rgba(0, 240, 255, 0.2);
+        }
+
+        .service-icon {
+            color: var(--primary);
+        }
+
+        .counter-value {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             -webkit-background-clip: text;
-            color: transparent;
+            -webkit-text-fill-color: transparent;
+            font-weight: 700;
         }
 
-        p {
-            font-size: 1.3rem;
-            color: #d0d0f0;
-        }
-
-        ul {
-            list-style: none;
-            max-width: 800px;
-            margin: 30px auto;
-            text-align: left;
-        }
-
-        ul li {
-            margin: 20px 0;
-            font-size: 1.2rem;
+        /* Simple border instead of animated gradient */
+        .gradient-border {
             position: relative;
-            padding-left: 30px;
-            transition: color 0.3s ease;
+            border-radius: 0.5rem;
+            border: 2px solid var(--primary);
+            overflow: hidden;
         }
 
-        ul li:hover {
-            color: #00d4ff;
+        /* Animated counter */
+        .count-animation {
+            animation: countUp 2.5s ease-out forwards;
         }
 
-        ul li:before {
-            content: "✦";
-            color: #ff00cc;
-            position: absolute;
-            left: 0;
-            font-size: 1.4rem;
+        @keyframes countUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
 
-        /* Footer */
-        footer {
-            background: linear-gradient(180deg, #0a0a14, #1a1a3b);
-            padding: 30px;
-            text-align: center;
-            font-size: 1rem;
-            color: #8888a0;
+        /* Navbar glass effect */
+        .navbar-glass {
+            background: rgba(10, 10, 10, 0.8);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        footer a {
-            color: #00d4ff;
-            text-decoration: none;
-            margin: 0 15px;
-            transition: color 0.3s ease;
+        .btn-primary, .btn-secondary {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transform: translateY(0);
         }
 
-        footer a:hover {
-            color: #ff00cc;
+        .btn-primary:hover, .btn-secondary:hover {
+            transform: translateY(-2px);
         }
 
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.8rem;
-            }
-            .hero .slogan {
-                font-size: 1.8rem;
-            }
-            .hero p {
-                font-size: 1.3rem;
-            }
-            h2 {
-                font-size: 2.2rem;
-            }
-            .btn-container {
-                gap: 15px;
-            }
-            .btn {
-                padding: 12px 25px;
-            }
+        .btn-primary:active, .btn-secondary:active {
+            transform: translateY(0);
         }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Hero Section -->
-    <header class="hero">
-        <h1>CleverCraft Technologies</h1>
-        <div class="slogan">Pioneering Security Research</div>
-        <p>From securing exams to protecting games and building robust software, we craft solutions that redefine trust in the digital age.</p>
-        <div class="btn-container">
-            <a href="javascript:alert('contact@clevercraft.tech');" class="btn">Discover Our Solutions</a>
-            <a href="javascript:alert('contact@clevercraft.tech');" class="btn">Get in Touch</a>
+    <!-- Navigation -->
+    <nav class="navbar-glass fixed w-full z-50 py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <a href="#" class="flex items-center">
+    <div class="text-2xl font-bold">
+        <span class="text-white font-extrabold bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400 glow">CleverCraft Technologies</span>
+    </div>
+</a>
+            <div class="hidden md:flex space-x-8">
+                <a href="#about" class="text-gray-300 hover:text-cyan-400 transition-colors">About</a>
+                <a href="#services" class="text-gray-300 hover:text-cyan-400 transition-colors">Services</a>
+                <a href="#why-us" class="text-gray-300 hover:text-cyan-400 transition-colors">Why Us</a>
+                <a href="#contact" class="text-gray-300 hover:text-cyan-400 transition-colors">Contact</a>
+            </div>
+            <button class="btn-primary px-4 py-2 rounded-md hidden md:block">Get a Consultation</button>
+            <button class="md:hidden text-white">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
         </div>
-    </header>
+    </nav>
 
-    <!-- Why CleverCraft Section -->
-    <section class="why">
-        <h2>Why Choose Us?</h2>
-        <p>Precision. Expertise. Future-Ready.</p>
-        <p>We blend cutting-edge technology with creative problem-solving to deliver security and software that stands the test of time.</p>
-        <ul>
-            <li>Pioneering Security: Industry-leading tools tailored to your needs.</li>
-            <li>Trusted by Innovators: Schools, gaming studios, and enterprises rely on us.</li>
-            <li>End-to-End Excellence: From concept to deployment, we’ve got you covered.</li>
-        </ul>
-        <div class="btn-container">
-            <a href="javascript:alert('contact@clevercraft.tech');" class="btn">Learn More</a>
+    <!-- Hero Section -->
+    <section id="hero" class="relative min-h-screen flex items-center cyber-grid">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-black opacity-90"></div>
+        
+        <!-- Animated background elements -->
+        <div class="absolute inset-0 overflow-hidden">
+            <div class="absolute top-1/4 left-1/4 w-64 h-64 rounded-full bg-cyan-500 opacity-10 blur-3xl animate-pulse"></div>
+            <div class="absolute bottom-1/3 right-1/3 w-96 h-96 rounded-full bg-emerald-500 opacity-10 blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+        </div>
+        
+        <div class="container mx-auto px-4 z-10">
+            <div class="max-w-3xl">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4 leading-tight">
+                    <span class="block">Fortifying Games,</span>
+                    <span class="block text-cyan-400">One Line of Code at a Time.</span>
+                </h1>
+                <p class="text-xl md:text-2xl text-gray-300 mb-8">Experts in Game Security, Reverse Engineering, and Advanced Anti-Cheat Solutions.</p>
+                <div class="flex flex-col sm:flex-row gap-4">
+                    <a href="#contact" class="btn-primary px-6 py-3 rounded-md text-center">Get a Consultation</a>
+                    <a href="#services" class="btn-secondary px-6 py-3 rounded-md text-center">Learn More</a>
+                </div>
+            </div>
         </div>
     </section>
 
-    <!-- Solutions Section -->
-    <section class="solutions">
-        <h2>Our Products & Services</h2>
-        <p>Smart Solutions for a Secure World</p>
-        <p>Explore how we protect integrity, enhance gaming, and empower your software vision.</p>
-        <ul>
-            <li><strong>ProctorShield</strong>: An advanced secure browser ensuring cheat-proof exams for schools and universities.</li>
-            <li><strong>Anti-Cheat & Game Security</strong>: Next-level protection for fair play and uncompromised gaming experiences.</li>
-            <li><strong>Software Engineering Consulting</strong>: Custom solutions, from architecture to implementation, built to scale.</li>
-        </ul>
-        <div class="btn-container">
-            <a href="javascript:alert('contact@clevercraft.tech');" class="btn">Explore ProctorShield</a>
-            <a href="javascript:alert('contact@clevercraft.tech');" class="btn">See Game Security</a>
-            <a href="javascript:alert('contact@clevercraft.tech');" class="btn">Consulting Details</a>
+    <!-- About Us Section -->
+    <section id="about" class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-b from-black to-gray-900 opacity-50"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">About <span class="text-cyan-400">CleverCraft</span></h2>
+                <div class="w-24 h-1 bg-cyan-400 mx-auto mb-8"></div>
+            </div>
+            
+            <div class="grid md:grid-cols-2 gap-12 items-center">
+                <div class="bg-gray-800 p-8 rounded-lg border-2 border-cyan-500">
+                    <h3 class="text-2xl font-bold mb-4 text-white">Our Mission</h3>
+                    <p class="text-gray-200 mb-6">
+                        At CleverCraft Technologies, we're dedicated to creating impenetrable security solutions for game developers. 
+                        We understand the unique challenges of game security and build custom anti-cheat systems that protect your 
+                        intellectual property while preserving the player experience.
+                    </p>
+                    <p class="text-gray-200">
+                        Our team of security experts combines deep technical knowledge with a passion for gaming, 
+                        allowing us to stay one step ahead of exploits and cheating methods in an ever-evolving landscape.
+                    </p>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="glass p-6 rounded-lg">
+                        <i class="fas fa-shield-alt text-cyan-400 text-4xl mb-4"></i>
+                        <h4 class="text-xl font-bold mb-2">Our Vision</h4>
+                        <p class="text-gray-300">To create a gaming ecosystem where fair play is the standard, not the exception.</p>
+                    </div>
+                    <div class="glass p-6 rounded-lg">
+                        <i class="fas fa-code text-cyan-400 text-4xl mb-4"></i>
+                        <h4 class="text-xl font-bold mb-2">Our Approach</h4>
+                        <p class="text-gray-300">Proactive security that anticipates threats before they materialize.</p>
+                    </div>
+                    <div class="glass p-6 rounded-lg">
+                        <i class="fas fa-users text-cyan-400 text-4xl mb-4"></i>
+                        <h4 class="text-xl font-bold mb-2">Our Team</h4>
+                        <p class="text-gray-300">Elite security professionals with deep gaming industry experience.</p>
+                    </div>
+                    <div class="glass p-6 rounded-lg">
+                        <i class="fas fa-lock text-cyan-400 text-4xl mb-4"></i>
+                        <h4 class="text-xl font-bold mb-2">Our Promise</h4>
+                        <p class="text-gray-300">Unwavering commitment to your game's integrity and your players' trust.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Our <span class="text-cyan-400">Services</span></h2>
+                <div class="w-24 h-1 bg-cyan-400 mx-auto mb-8"></div>
+                <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                    Comprehensive security solutions designed specifically for modern game development.
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Service 1 -->
+                <div class="card p-6 hover:glow-box">
+                    <div class="h-16 w-16 rounded-full bg-purple-500 flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-cogs text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Reverse Engineering</h3>
+                    <p class="text-gray-300 text-center mb-6">
+                        Deconstructing software to identify vulnerabilities and strengthen security from the inside out.
+                    </p>
+                    <div class="text-center">
+                        <a href="#" class="btn-secondary inline-block px-4 py-2 rounded-md text-sm">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Service 2 -->
+                <div class="card p-6 hover:glow-box">
+                    <div class="h-16 w-16 rounded-full bg-purple-500 flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-shield-alt text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Code Obfuscation</h3>
+                    <p class="text-gray-300 text-center mb-6">
+                        Protecting your intellectual property by making code difficult to reverse engineer or tamper with.
+                    </p>
+                    <div class="text-center">
+                        <a href="#" class="btn-secondary inline-block px-4 py-2 rounded-md text-sm">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Service 3 -->
+                <div class="card p-6 hover:glow-box">
+                    <div class="h-16 w-16 rounded-full bg-purple-500 flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-user-shield text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Anti-Cheat Solutions</h3>
+                    <p class="text-gray-300 text-center mb-6">
+                        Advanced detection systems that identify and prevent cheating in real-time across all platforms.
+                    </p>
+                    <div class="text-center">
+                        <a href="#" class="btn-secondary inline-block px-4 py-2 rounded-md text-sm">Learn More</a>
+                    </div>
+                </div>
+                
+                <!-- Service 4 -->
+                <div class="card p-6 hover:glow-box">
+                    <div class="h-16 w-16 rounded-full bg-purple-500 flex items-center justify-center mb-6 mx-auto">
+                        <i class="fas fa-lock text-2xl text-white"></i>
+                    </div>
+                    <h3 class="text-xl font-bold mb-3 text-center">Anti-Tamper Technology</h3>
+                    <p class="text-gray-300 text-center mb-6">
+                        Preventing unauthorized modifications to your game files and protecting the integrity of your code.
+                    </p>
+                    <div class="text-center">
+                        <a href="#" class="btn-secondary inline-block px-4 py-2 rounded-md text-sm">Learn More</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section id="why-us" class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 cyber-grid"></div>
+        <div class="container mx-auto px-4 relative z-10">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl md:text-5xl font-bold mb-4">Why Choose <span class="text-cyan-400">Us</span></h2>
+                <div class="w-24 h-1 bg-cyan-400 mx-auto mb-8"></div>
+            </div>
+            
+            <!-- Stats Counters -->
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 mb-16">
+                <div class="text-center">
+                    <div class="counter-value text-4xl md:text-5xl font-bold mb-2 count-animation" data-target="10">10+</div>
+                    <p class="text-gray-300">Years of Experience</p>
+                </div>
+                <div class="text-center">
+                    <div class="counter-value text-4xl md:text-5xl font-bold mb-2 count-animation" data-target="250">250+</div>
+                    <p class="text-gray-300">Games Secured</p>
+                </div>
+                <div class="text-center">
+                    <div class="counter-value text-4xl md:text-5xl font-bold mb-2 count-animation" data-target="1000000">1M+</div>
+                    <p class="text-gray-300">Cheaters Stopped</p>
+                </div>
+                <div class="text-center">
+                    <div class="counter-value text-4xl md:text-5xl font-bold mb-2 count-animation" data-target="5000000">5M+</div>
+                    <p class="text-gray-300">Lines of Secured Code</p>
+                </div>
+            </div>
+            
+            <!-- Comparison Table -->
+            <div class="bg-gray-800 rounded-lg overflow-hidden border-2 border-cyan-500">
+                <div class="p-6 bg-gray-800">
+                    <h3 class="text-2xl font-bold mb-2 text-white">How We Compare</h3>
+                    <p class="text-gray-300">See why leading game studios choose CleverCraft Technologies</p>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="w-full">
+                        <thead>
+                            <tr class="bg-gray-900">
+                                <th class="py-4 px-6 text-left">Features</th>
+                                <th class="py-4 px-6 text-center text-cyan-400">CleverCraft</th>
+                                <th class="py-4 px-6 text-center text-gray-400">Competitors</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="border-b border-gray-700">
+                                <td class="py-4 px-6">Game-Specific Security Solutions</td>
+                                <td class="py-4 px-6 text-center"><i class="fas fa-check text-cyan-400"></i></td>
+                                <td class="py-4 px-6 text-center"><i class="fas fa-times text-gray-500"></i></td>
+                            </tr>
+                            <tr class="border-b border-gray-700">
+                                <td class="py-4 px-6">24/7 Threat Monitoring</td>
+                                <td class="py-4 px-6 text-center"><i class="fas fa-check text-cyan-400"></i></td>
+                                <td class="py-4 px-6 text-center"><i class="fas fa-check text-gray-500"></i></td>
+                            </tr>
+                            <tr class="border-b border-gray-700">
+                                <td class="py-4 px-6">Custom Anti-Cheat Development</td>
+                                <td class="py-4 px-6 text-center"><i class="fas fa-check text-cyan-400"></i></td>
+                                <td class="py-4 px-6 text-center"><i class="fas fa-times text-gray-500"></i></td>
+                            </tr>
+                            <tr class="border-b border-gray-700">
+                                <td class="py-4 px-6">Low Performance Impact</td>
+                                <td class="py-4 px-6 text-center"><i class="fas fa-check text-cyan-400"></i></td>
+                                <td class="py-4 px-6 text-center"><i class="fas fa-times text-gray-500"></i></td>
+                            </tr>
+                            <tr>
+                                <td class="py-4 px-6">Cross-Platform Support</td>
+                                <td class="py-4 px-6 text-center"><i class="fas fa-check text-cyan-400"></i></td>
+                                <td class="py-4 px-6 text-center"><i class="fas fa-check text-gray-500"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Call to Action Section -->
-    <section class="cta">
-        <h2>Ready to Elevate Your Security?</h2>
-        <p>Let’s Craft Your Future Together</p>
-        <p>Whether it’s exam integrity, game protection, or software brilliance, we’re here to make it happen. Start today.</p>
-        <div class="btn-container">
-            <a href="javascript:alert('contact@clevercraft.tech');" class="btn">Request a Demo</a>
-            <a href="javascript:alert('contact@clevercraft.tech');" class="btn">Contact Us</a>
+    <section id="contact" class="py-20 bg-gray-900">
+        <div class="container mx-auto px-4">
+            <div class="max-w-4xl mx-auto bg-gray-800 rounded-lg overflow-hidden border-2 border-cyan-500">
+                <div class="p-8 md:p-12">
+                    <h2 class="text-3xl md:text-4xl font-bold mb-6 text-center text-white">Ready to Secure Your Game?</h2>
+                    <p class="text-xl text-gray-300 text-center mb-8">
+                        Get in Touch with Our Security Experts Today.
+                    </p>
+                    
+                    <form class="grid md:grid-cols-2 gap-6" id="contactForm" onsubmit="handleSubmit(event)">
+    <div>
+        <label for="name" class="block text-sm font-medium text-gray-300 mb-2">Full Name</label>
+        <input type="text" id="name" required class="w-full bg-gray-700 border border-gray-600 rounded-md py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+    </div>
+    <div>
+        <label for="email" class="block text-sm font-medium text-gray-300 mb-2">Email Address</label>
+        <input type="email" id="email" required class="w-full bg-gray-700 border border-gray-600 rounded-md py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+    </div>
+    <div>
+        <label for="company" class="block text-sm font-medium text-gray-300 mb-2">Company</label>
+        <input type="text" id="company" required class="w-full bg-gray-700 border border-gray-600 rounded-md py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+    </div>
+    <div>
+        <label for="phone" class="block text-sm font-medium text-gray-300 mb-2">Phone Number</label>
+        <input type="tel" id="phone" required class="w-full bg-gray-700 border border-gray-600 rounded-md py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500">
+    </div>
+    <div class="md:col-span-2">
+        <label for="message" class="block text-sm font-medium text-gray-300 mb-2">Message</label>
+        <textarea id="message" rows="4" required class="w-full bg-gray-700 border border-gray-600 rounded-md py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500"></textarea>
+    </div>
+    <div class="md:col-span-2 text-center">
+        <button type="submit" class="btn-primary px-8 py-3 rounded-md inline-block">Submit Request</button>
+    </div>
+</form>
+                </div>
+            </div>
         </div>
     </section>
 
     <!-- Footer -->
-    <footer>
-        <p>CleverCraft Technologies - Pioneering Security Research</p>
-        <p>© 2025 CleverCraft Technologies. All rights reserved.</p>
+    <footer class="bg-black py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8 mb-8">
+                <div>
+                    <h3 class="text-xl font-bold mb-4">CleverCraft Technologies</h3>
+                    <p class="text-gray-300 mb-4">Fortifying Games, One Line of Code at a Time.</p>
+                    <div class="flex space-x-4">
+                        <a href="https://github.com/CleverCraftTechnologies" class="text-gray-400 hover:text-cyan-400 transition-colors">
+                            <i class="fab fa-github"></i>
+                        </a>
+                        <a href="https://www.linkedin.com/company/clevercraft-technologies/" class="text-gray-400 hover:text-cyan-400 transition-colors">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Quick Links</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors">Home</a></li>
+                        <li><a href="#about" class="text-gray-400 hover:text-cyan-400 transition-colors">About Us</a></li>
+                        <li><a href="#services" class="text-gray-400 hover:text-cyan-400 transition-colors">Services</a></li>
+                        <li><a href="#why-us" class="text-gray-400 hover:text-cyan-400 transition-colors">Why Choose Us</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-cyan-400 transition-colors">Contact</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Services</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors">Reverse Engineering</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors">Code Obfuscation</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors">Anti-Cheat Solutions</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors">Anti-Tamper Technology</a></li>
+                        <li><a href="#" class="text-gray-400 hover:text-cyan-400 transition-colors">Security Consulting</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-lg font-bold mb-4">Contact Us</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li class="flex items-start">
+                            <i class="fas fa-envelope mt-1 mr-3 text-cyan-400"></i>
+                            <span>contact@clevercraft.tech</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t border-gray-800 pt-8 text-center">
+                <p class="text-white-500 text-sm">© 2025 CleverCraft Technologies. All rights reserved.</p>
+            </div>
+        </div>
     </footer>
 
+    <!-- JavaScript for animations and interactions -->
     <script>
-        // Smooth scroll for anchor links
+    document.addEventListener('DOMContentLoaded', function() {
+        const counters = document.querySelectorAll('.counter-value');
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const counter = entry.target;
+                    counter.classList.add('count-animation');
+                    observer.unobserve(counter);
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        counters.forEach(counter => {
+            observer.observe(counter);
+        });
+        
+        // Mobile menu toggle
+        const menuButton = document.querySelector('.fa-bars');
+        if (menuButton) {
+            menuButton.addEventListener('click', function() {
+                alert('Mobile menu coming soon!');
+            });
+        }
+        
+        // Smooth scrolling for all anchor links and buttons with easing
+        function smoothScroll(targetId) {
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+                const targetPosition = targetElement.offsetTop - 80;
+                const startPosition = window.pageYOffset;
+                const distance = targetPosition - startPosition;
+                const duration = 1000; // Duration in milliseconds
+                let start = null;
+
+                function animation(currentTime) {
+                    if (start === null) start = currentTime;
+                    const timeElapsed = currentTime - start;
+                    const progress = Math.min(timeElapsed / duration, 1);
+                    
+                    // Easing function (easeInOutCubic)
+                    const ease = progress < 0.5
+                        ? 4 * progress * progress * progress
+                        : 1 - Math.pow(-2 * progress + 2, 3) / 2;
+                    
+                    window.scrollTo(0, startPosition + (distance * ease));
+                    
+                    if (timeElapsed < duration) {
+                        requestAnimationFrame(animation);
+                    }
+                }
+                
+                requestAnimationFrame(animation);
+            }
+        }
+
+        // Handle navigation links
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function(e) {
                 e.preventDefault();
-                document.querySelector(this.getAttribute('href')).scrollIntoView({
-                    behavior: 'smooth'
-                });
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                smoothScroll(targetId);
             });
         });
-    </script>
+
+        // Handle all CTA buttons
+        document.querySelectorAll('.btn-primary, .btn-secondary').forEach(button => {
+            button.addEventListener('click', function(e) {
+                e.preventDefault();
+                smoothScroll('#contact');
+            });
+        });
+    });
+
+    // Handle contact form submission
+    function handleSubmit(event) {
+        event.preventDefault();
+        
+        const name = document.getElementById('name').value;
+        const email = document.getElementById('email').value;
+        const company = document.getElementById('company').value;
+        const phone = document.getElementById('phone').value;
+        const message = document.getElementById('message').value;
+        
+        const mailtoLink = `mailto:contact@clevercraft.tech?subject=Security Consultation Request from ${name}&body=Name: ${name}%0D%0AEmail: ${email}%0D%0ACompany: ${company}%0D%0APhone: ${phone}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+        
+        window.open(mailtoLink, '_blank');
+    }
+</script>
 </body>
 </html>
