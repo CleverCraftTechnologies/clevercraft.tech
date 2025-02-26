@@ -1,1 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CleverCraft Technologies - Pioneering Security Research</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Montserrat', sans-serif;
+        }
 
+        body {
+            background: #0a0a14;
+            color: #e6e6ff;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(145deg, #1a1a3b 0%, #2d2d6b 50%, #0a0a14 100%);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 0 20px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle, rgba(0, 212, 255, 0.1) 0%, transparent 70%);
+            animation: pulse 10s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); opacity: 0.5; }
+            50% { transform: scale(1.2); opacity: 0.3; }
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            background: linear-gradient(90deg, #00d4ff, #ff00cc);
+            -webkit-background-clip: text;
+            color: transparent;
+            position: relative;
+            z-index: 1;
+        }
+
+        .hero .slogan {
+            font-size: 2.5rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            background: linear-gradient(90deg, #66d9ff, #b366ff, #ff66cc, #66d9ff);
+            background-size: 400% 100%;
+            -webkit-background-clip: text;
+            color: transparent;
+            position: relative;
+            z-index: 1;
+            text-shadow: 0 2px 10px rgba(0, 212, 255, 0.3);
+            animation: subtle-rainbow 30s linear infinite;
+        }
+
+        @keyframes subtle-rainbow {
+            0% { background-position: 0% 50%; }
+            100% { background-position: 100% 50%; }
+        }
+
+        .hero p {
+            font-size: 1.5rem;
+            max-width: 700px;
+            margin-bottom: 30px;
+            color: #c0c0e0;
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn-container {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 35px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #00d4ff;
+            text-decoration: none;
+            font-weight: 600;
+            border-radius: 50px;
+            border: 1px solid rgba(0, 212, 255, 0.3);
+            backdrop-filter: blur(10px);
+            transition: all 0.4s ease;
+        }
+
+        .btn:hover {
+            background: #00d4ff;
+            color: #0a0a14;
+            transform: scale(1.05);
+            box-shadow: 0 8px 20px rgba(0, 212, 255, 0.5);
+        }
+
+        /* Sections */
+        section {
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+        }
+
+        .why, .solutions, .cta {
+            background: rgba(20, 20, 40, 0.9);
+            margin: 20px auto;
+            max-width: 1200px;
+            border-radius: 20px;
+            padding: 50px;
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        h2 {
+            font-size: 2.8rem;
+            margin-bottom: 25px;
+            background: linear-gradient(90deg, #00d4ff, #7a00ff);
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+
+        p {
+            font-size: 1.3rem;
+            color: #d0d0f0;
+        }
+
+        ul {
+            list-style: none;
+            max-width: 800px;
+            margin: 30px auto;
+            text-align: left;
+        }
+
+        ul li {
+            margin: 20px 0;
+            font-size: 1.2rem;
+            position: relative;
+            padding-left: 30px;
+            transition: color 0.3s ease;
+        }
+
+        ul li:hover {
+            color: #00d4ff;
+        }
+
+        ul li:before {
+            content: "✦";
+            color: #ff00cc;
+            position: absolute;
+            left: 0;
+            font-size: 1.4rem;
+        }
+
+        /* Footer */
+        footer {
+            background: linear-gradient(180deg, #0a0a14, #1a1a3b);
+            padding: 30px;
+            text-align: center;
+            font-size: 1rem;
+            color: #8888a0;
+        }
+
+        footer a {
+            color: #00d4ff;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s ease;
+        }
+
+        footer a:hover {
+            color: #ff00cc;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.8rem;
+            }
+            .hero .slogan {
+                font-size: 1.8rem;
+            }
+            .hero p {
+                font-size: 1.3rem;
+            }
+            h2 {
+                font-size: 2.2rem;
+            }
+            .btn-container {
+                gap: 15px;
+            }
+            .btn {
+                padding: 12px 25px;
+            }
+        }
+    </style>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Hero Section -->
+    <header class="hero">
+        <h1>CleverCraft Technologies</h1>
+        <div class="slogan">Pioneering Security Research</div>
+        <p>From securing exams to protecting games and building robust software, we craft solutions that redefine trust in the digital age.</p>
+        <div class="btn-container">
+            <a href="mailto:contact@clevercraft.tech" class="btn">Discover Our Solutions</a>
+            <a href="mailto:contact@clevercraft.tech" class="btn">Get in Touch</a>
+        </div>
+    </header>
+
+    <!-- Why CleverCraft Section -->
+    <section class="why">
+        <h2>Why Choose Us?</h2>
+        <p>Precision. Expertise. Future-Ready.</p>
+        <p>We blend cutting-edge technology with creative problem-solving to deliver security and software that stands the test of time.</p>
+        <ul>
+            <li>Pioneering Security: Industry-leading tools tailored to your needs.</li>
+            <li>Trusted by Innovators: Schools, gaming studios, and enterprises rely on us.</li>
+            <li>End-to-End Excellence: From concept to deployment, we’ve got you covered.</li>
+        </ul>
+        <div class="btn-container">
+            <a href="mailto:contact@clevercraft.tech" class="btn">Learn More</a>
+        </div>
+    </section>
+
+    <!-- Solutions Section -->
+    <section class="solutions">
+        <h2>Our Products & Services</h2>
+        <p>Smart Solutions for a Secure World</p>
+        <p>Explore how we protect integrity, enhance gaming, and empower your software vision.</p>
+        <ul>
+            <li><strong>ProctorShield</strong>: An advanced secure browser ensuring cheat-proof exams for schools and universities.</li>
+            <li><strong>Anti-Cheat & Game Security</strong>: Next-level protection for fair play and uncompromised gaming experiences.</li>
+            <li><strong>Software Engineering Consulting</strong>: Custom solutions, from architecture to implementation, built to scale.</li>
+        </ul>
+        <div class="btn-container">
+            <a href="mailto:contact@clevercraft.tech" class="btn">Explore ProctorShield</a>
+            <a href="mailto:contact@clevercraft.tech" class="btn">See Game Security</a>
+            <a href="mailto:contact@clevercraft.tech" class="btn">Consulting Details</a>
+        </div>
+    </section>
+
+    <!-- Call to Action Section -->
+    <section class="cta">
+        <h2>Ready to Elevate Your Security?</h2>
+        <p>Let’s Craft Your Future Together</p>
+        <p>Whether it’s exam integrity, game protection, or software brilliance, we’re here to make it happen. Start today.</p>
+        <div class="btn-container">
+            <a href="mailto:contact@clevercraft.tech" class="btn">Request a Demo</a>
+            <a href="mailto:contact@clevercraft.tech" class="btn">Contact Us</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>CleverCraft Technologies - Pioneering Security Research</p>
+        <p>© 2025 CleverCraft Technologies. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
