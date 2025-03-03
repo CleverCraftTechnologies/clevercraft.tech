@@ -568,20 +568,43 @@
         });
     });
 
-    // Handle contact form submission
     function handleSubmit(event) {
-        event.preventDefault();
-        
-        const name = document.getElementById('name').value;
-        const email = document.getElementById('email').value;
-        const company = document.getElementById('company').value;
-        const phone = document.getElementById('phone').value;
-        const message = document.getElementById('message').value;
-        
-        const mailtoLink = `mailto:contact@clevercraft.tech?subject=Security Consultation Request from ${name}&body=Name: ${name}%0D%0AEmail: ${email}%0D%0ACompany: ${company}%0D%0APhone: ${phone}%0D%0A%0D%0AMessage:%0D%0A${message}`;
-        
-        window.open(mailtoLink, '_blank');
+        try {
+            // Prevent the default form submission
+            event.preventDefault();
+            console.log('Form submission started');
+            
+            // Get form values
+            const name = encodeURIComponent(document.getElementById('name').value.trim());
+            const email = encodeURIComponent(document.getElementById('email').value.trim());
+            const company = encodeURIComponent(document.getElementById('company').value.trim());
+            const phone = encodeURIComponent(document.getElementById('phone').value.trim());
+            const message = encodeURIComponent(document.getElementById('message').value.trim());
+            
+            // Construct mailto link with proper encoding
+            const mailtoLink = `mailto:contact@clevercraft.tech?subject=Security Consultation Request from ${name}&body=Name: ${name}%0D%0AEmail: ${email}%0D%0ACompany: ${company}%0D%0APhone: ${phone}%0D%0A%0D%0AMessage:%0D%0A${message}`;
+            
+            // Open the mailto link
+            window.location.href = mailtoLink;
+            
+            // Alternative approach using window.open (as backup)
+            // If the above doesn't work, uncomment this:
+            // window.open(mailtoLink, '_self');
+            
+            console.log('Form submitted successfully');
+        } catch (error) {
+            console.error('Error submitting form:', error);
+            alert('There was an error submitting the form. Please try again.');
+        }
     }
+
+    // Add event listener when the DOM is loaded
+    document.addEventListener('DOMContentLoaded', function() {
+        const form = document.getElementById('contactForm');
+        if (form) {
+            form.addEventListener('submit', handleSubmit);
+        }
+    });
 </script>
 </body>
 </html>
