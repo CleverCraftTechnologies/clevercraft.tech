@@ -427,7 +427,7 @@
         <textarea id="message" rows="4" required class="w-full bg-gray-700 border border-gray-600 rounded-md py-3 px-4 text-white focus:outline-none focus:ring-2 focus:ring-cyan-500"></textarea>
     </div>
     <div class="md:col-span-2 text-center">
-        <button type="submit" class="btn-primary px-8 py-3 rounded-md inline-block">Submit Request</button>
+        <button id="ranj" type="submit" class="btn-primary px-8 py-3 rounded-md inline-block">Submit Request</button>
     </div>
 </form>
                 </div>
@@ -561,6 +561,9 @@
 
         // Handle all CTA buttons
         document.querySelectorAll('.btn-primary, .btn-secondary').forEach(button => {
+            if (button.id === "ranj") {
+                return;
+            }
             button.addEventListener('click', function(e) {
                 e.preventDefault();
                 smoothScroll('#contact');
